@@ -66,34 +66,3 @@ function adjustRatingHeight(toAdjust, toMinimize) {
     }
   }
 }
-
-// deletes all letters with 500+ characters
-function deleteLongLetters() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var src = ss.getSheetByName("full_letters");
-  
-  var srcRange = src.getDataRange();
-  var srcValues = srcRange.getValues();
-  var rowsToDelete = [];
-  var total = 0;
-
-  // Loop through each row in the src sheet
-  for (var i = 0; i < srcValues.length; i++) {
-    var rowData = srcValues[i];
-    var wordsInColumnD = rowData[4] ? rowData[4].toString().trim().split(/\s+/).length : 0;
-    
-    // if number of words > 500
-    if (wordsInColumnD > 500) {
-      rowsToDelete.push(i + 1); // adding 1 to convert to 1 based index
-    }
-  }
-  
-  // remove rows, in reverse - to keep order.
-  rowsToDelete.reverse().forEach((i) => {
-    total++;
-    Logger.log("Removed Idx: " + i);
-    src.deleteRow(i);
-  });
-
-  Logger.log("Total: " + total);
-}
