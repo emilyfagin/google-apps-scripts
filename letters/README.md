@@ -3,7 +3,7 @@
 ## Google Sheet Sorting
 ### Goals
 1. Easy 'rating' and sorting mechanism
-2. Minimize eliminated letters 
+2. Minimize 'read' entries, onEdit
 3. Letters with 500+ words - move to a different sheet
 4. Provide custom menu with action triggers, for easy formatting.
 
